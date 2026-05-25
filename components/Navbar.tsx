@@ -19,6 +19,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const navLinks = [
     { name: t.navHome, href: "/#home" },
     { name: t.navAbout, href: "/#about" },
@@ -101,9 +109,10 @@ export default function Navbar() {
           </motion.div>
 
           <motion.button
+            onClick={scrollToContact}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-accent hover:bg-accent/90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg"
+            className="bg-accent hover:bg-accent/90 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg cursor-pointer"
           >
             {t.navQuote}
           </motion.button>

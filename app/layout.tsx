@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Intershipping & Transport | อินเตอร์ชิปปิ้ง แอนด์ ทรานสปอร์ต",
   description: "บริการขนส่งสินค้าและโลจิสติกส์ครบวงจร ทั้งทางบกและทางน้ำ",
+  icons: {
+    icon: "/LOGO-IST.jpg",
+  },
 };
 
 export default function RootLayout({

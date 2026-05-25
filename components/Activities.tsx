@@ -51,66 +51,67 @@ export default function Activities() {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem("ist_albums");
-    if (saved) {
-      try {
-        setAlbums(JSON.parse(saved));
-      } catch (e) {
-        console.error(e);
+    const initialAlbums: Album[] = [
+      {
+        id: "album-chinese-new-year",
+        category: { th: "กิจกรรมเทศกาล", en: "Festive Activities" },
+        title: { th: "วันตรุษจีน", en: "Chinese New Year Celebration" },
+        desc: { 
+          th: "กิจกรรมเฉลิมฉลองเทศกาลตรุษจีนประจำปี เพื่อความเป็นสิริมงคล ความรุ่งเรือง และร่วมส่งเสริมความสุขในการทำงานร่วมกันของครอบครัว IST", 
+          en: "Annual celebration of Chinese New Year at the IST office to welcome prosperity, good fortune, and promote team happiness." 
+        },
+        date: "16 กุมภาพันธ์ 2569",
+        location: { th: "หน้าบริษัท", en: "In front of the Company Office" },
+        cover: "/img01.JPG",
+        photos: [
+          "/img01.JPG",
+          "/img02.JPG",
+          "/img03.JPG",
+          "/img04.JPG"
+        ]
+      },
+      {
+        id: "album-songkran",
+        category: { th: "กิจกรรมประเพณี", en: "Traditional Events" },
+        title: { th: "ร่วมสืบสานประเพณีสงกรานต์", en: "Preserving Songkran Festival" },
+        desc: { 
+          th: "กิจกรรมสรงน้ำพระพุทธรูป รดน้ำดำหัวผู้ใหญ่ และการละเล่นสงกรานต์ของพนักงานเพื่อสืบสานประเพณีไทยและสร้างขวัญกำลังใจที่ดีให้กับทีมงาน", 
+          en: "Traditional water pouring ceremony and activities for the Songkran festival to celebrate Thai New Year and foster unity." 
+        },
+        date: "12 เมษายน 2569",
+        location: { th: "หน้าบริษัท", en: "In front of the Company Office" },
+        cover: "/img05.JPG",
+        photos: [
+          "/img05.JPG",
+          "/img06.JPG",
+          "/img07.JPG",
+          "/img08.JPG",
+          "/img09.JPG"
+        ]
+      },
+      {
+        id: "album-sports-day",
+        category: { th: "กีฬา & กิจกรรมทีมเวิร์ก", en: "Sports & Teamwork" },
+        title: { th: "กีฬาสีพนักงาน", en: "Employee Sports Day" },
+        date: "8 สิงหาคม 2568",
+        desc: { 
+          th: "กิจกรรมกีฬาสีและสานสัมพันธ์พนักงานประจำปี เพื่อส่งเสริมสุขภาพที่ดี สร้างความร่วมมือร่วมใจ และกระชับความสัมพันธ์ของทุกคนในครอบครัว IST", 
+          en: "Annual sports day event designed to promote physical health, enhance teamwork, and strengthen relationships across the organization." 
+        },
+        location: { th: "สนามกีฬา", en: "Sports Stadium" },
+        cover: "/img10.JPG",
+        photos: [
+          "/img10.JPG",
+          "/img11.JPG",
+          "/img12.JPG",
+          "/img13.JPG",
+          "/img14.JPG",
+          "/img15.JPG",
+          "/img16.JPG"
+        ]
       }
-    } else {
-      const initialAlbums: Album[] = [
-        {
-          id: "album-1",
-          category: { th: "สัมมนา & พัฒนาทีม", en: "Seminar & Team Work" },
-          title: { th: "กิจกรรมทีมบิลดิ้งและการสัมมนาประจำปี", en: "Annual Team Building & Workshop" },
-          desc: { th: "การสัมมนาพัฒนาศักยภาพทีมงานและกิจกรรมทีมเวิร์ก เพื่อสร้างความสามัคคีและเพิ่มประสิทธิภาพในการทำงานร่วมกันเพื่อลูกค้าของเรา", en: "Professional development seminars and team-building exercises designed to strengthen synergy and maximize workplace efficiency." },
-          date: "2026-03-12",
-          location: { th: "โรงแรมดุสิตธานี พัทยา", en: "Dusit Thani Pattaya" },
-          cover: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
-          photos: [
-            "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1531535934027-667f687cadae?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
-          ]
-        },
-        {
-          id: "album-2",
-          category: { th: "กิจกรรมเพื่อสังคม CSR", en: "Corporate CSR" },
-          title: { th: "กิจกรรมเพื่อสังคมและสิ่งแวดล้อม (CSR)", en: "Corporate Social Responsibility (CSR)" },
-          desc: { th: "กิจกรรมปันน้ำใจคืนสู่สังคมและการอนุรักษ์สิ่งแวดล้อมของทีมงาน IST เพื่อส่งเสริมการเติบโตอย่างยั่งยืน", en: "Charitable and environmental activities conducted by the IST team to promote sustainable community development." },
-          date: "2026-01-20",
-          location: { th: "สถานสงเคราะห์เด็กและปลูกป่าชายเลน สมุทรปราการ", en: "Mangrove Conservation Area, Samut Prakan" },
-          cover: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
-          photos: [
-            "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1461530867269-07df95a5f1e1?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1559027615-cd4488955265?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80"
-          ]
-        },
-        {
-          id: "album-3",
-          category: { th: "ท่องเที่ยว & สังสรรค์ประจำปี", en: "Outing & Annual Party" },
-          title: { th: "งานเลี้ยงสังสรรค์และท่องเที่ยวประจำปี", en: "Annual Outing & Celebration Party" },
-          desc: { th: "ทริปท่องเที่ยวพักผ่อนประจำปีและงานเลี้ยงสังสรรค์ส่งท้ายปีเก่าต้อนรับปีใหม่ เพื่อตอบแทนความทุ่มเทของทุกคนในครอบครัว IST", en: "A memorable year-end outing and celebration party organized to honor the hard work and dedication of the IST team." },
-          date: "2025-12-25",
-          location: { th: "โรงแรมรอยัล คลิฟ บีช พัทยา", en: "Royal Cliff Beach Hotel Pattaya" },
-          cover: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
-          photos: [
-            "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1505232458729-5634d86d702a?auto=format&fit=crop&w=1200&q=80"
-          ]
-        }
-      ];
-      setAlbums(initialAlbums);
-    }
+    ];
+    setAlbums(initialAlbums);
   }, []);
 
   const handleOpenAlbum = (album: Album) => {
